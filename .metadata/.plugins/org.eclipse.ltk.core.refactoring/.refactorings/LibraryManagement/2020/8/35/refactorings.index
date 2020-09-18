@@ -1,0 +1,8 @@
+1598448722696	Delete element
+1598514488730	Rename type 'BookController'
+1598514552775	Rename type 'RegisterController'
+1598514747440	Rename type 'BookDetailsDAO'
+1598514776814	Rename type 'RegisterDAO'
+1598514807910	Rename type 'BookDetailsService'
+1598514846575	Rename type 'RegisterService'
+1598515129154	Rename type 'Book'

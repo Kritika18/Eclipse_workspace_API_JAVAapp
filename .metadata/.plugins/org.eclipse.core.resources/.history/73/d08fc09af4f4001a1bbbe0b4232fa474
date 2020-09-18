@@ -1,0 +1,42 @@
+package com.web.HotelBooking.controller;
+
+import javax.validation.Valid;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.web.HotelBooking.DAOModel.RegisterModel;
+import com.web.HotelBooking.DAOModel.RoomType;
+import com.web.HotelBooking.service.RoomTypeService;
+
+@RestController
+public class RoomAddController {
+	private static Logger LOG = LoggerFactory.getLogger("RegisterController");
+	
+	@Autowired
+	RoomTypeService roomtypeservice;
+	
+	
+	@PostMapping("/register")  
+	private int save(@Valid @RequestBody RoomType u)   
+	{  
+		roomtypeservice.saveOrUpdate(u);  
+	return u.getId();  
+	}  
+	
+	@PutMapping("/increase")
+	private String put(@Valid @RequestBody RoomType u)   
+	{
+		roomtypeservice.saveOrUpdate(u);  
+		return u.getNoofrooms();  
+	}
+	
+	
+	
+
+}

@@ -1,0 +1,5 @@
+package com.web.HotelBooking.controller;
+
+public class RegisterController {
+
+}

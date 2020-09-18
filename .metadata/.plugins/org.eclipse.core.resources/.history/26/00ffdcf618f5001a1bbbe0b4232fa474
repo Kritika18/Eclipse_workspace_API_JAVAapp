@@ -1,0 +1,17 @@
+package com.web.HotelBooking.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.web.HotelBooking.DAO.bookingDetailsDAO;
+
+public class BookingService {
+	
+	@Autowired
+	bookingDetailsDAO bookingDao;
+
+	public Object bookings() {
+		// TODO Auto-generated method stub
+		return  bookingDao.bookings();;
+	}
+
+}

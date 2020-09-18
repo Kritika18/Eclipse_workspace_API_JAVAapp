@@ -1,0 +1,18 @@
+package parking_lot.payment;
+
+public class Leave implements Payment{
+
+	@Override
+	public void vehicle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rate() {
+		// TODO Auto-generated method stub
+		
+	} extends SaveCarData {
+	
+
+}

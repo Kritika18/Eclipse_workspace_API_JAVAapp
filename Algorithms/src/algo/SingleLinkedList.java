@@ -1,0 +1,18 @@
+package algo;
+
+public class SingleLinkedList {
+
+	public Node head;  // defining head 
+
+	public static class Node {
+
+		Node next;  // next is also node type , keep it empty
+
+		Object data;  // put data in node 
+ 
+		Node(Object data) {
+			this.data = data;
+			next = null;
+		}
+	}
+}

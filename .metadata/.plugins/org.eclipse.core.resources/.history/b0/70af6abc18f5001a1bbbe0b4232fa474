@@ -1,0 +1,10 @@
+package com.web.HotelBooking.service;
+
+public class BookingService {
+
+	public Object bookings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

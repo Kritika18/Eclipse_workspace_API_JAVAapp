@@ -1,0 +1,91 @@
+package algo;
+
+import java.util.LinkedList;
+import java.util.Stack;
+
+public class NoOfAppendsPalindrome {
+
+	public static void main(String[] args)
+	{
+	StringBuffer str = new StringBuffer("abac");
+	NoOfAppendsPalindrome Obj = new NoOfAppendsPalindrome();
+	Obj.appendToPalindrome(str);
+	}
+
+	
+	private void appendToPalindrome(StringBuffer str) {
+		// TODO Auto-generated method stub
+		int i =1 , found=0;
+		char foundMid ;
+		int size = str.length();
+		System.out.println(size);
+		Stack<String> left = new Stack<String>();
+		Stack<String> right = new Stack<String>();
+		for( i =1 ; i<size-1 ; i++)
+		{
+			//System.out.print(i);
+			if(str.charAt(i+1) == str.charAt(i-1))
+			{
+				
+				foundMid = str.charAt(i);
+				System.out.println(foundMid);
+				found = 1;
+				break;
+				
+			}
+			
+		
+			
+		}
+		if(found==0)
+		{
+			foundMid = str.charAt(i);
+			System.out.println(foundMid);
+		}
+	    
+		System.out.print(i);
+		for(int j = 0 ; j < i ; j++ )
+		{
+			char s =  str.charAt(j);
+			String myStr = Character.toString(s);
+			
+			left.push(myStr);
+			
+		}
+		for(int j = i+1 ; j < str.length() ; j++ )
+		{
+			char c =  str.charAt(j);
+			String myStr = Character.toString(c);
+			System.out.println("right" +myStr);
+			right.push(myStr);
+			
+		}
+		System.out.println(left);
+		System.out.println(right.peek());
+		
+		if(left.peek()==right.peek())
+		{
+			
+		}
+		else if(left.size()>right.size())
+		{
+			String append= left.pop();
+			
+			str.append(append);
+		}
+		else if(right.size()>left.size())
+		{
+			
+			String append= right.pop();
+			System.out.println(append);
+			str.insert(0,append);
+		}
+			
+		System.out.println(str);
+		
+		}
+	
+	
+	
+}
+

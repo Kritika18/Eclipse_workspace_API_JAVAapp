@@ -1,0 +1,10 @@
+package com.web.HotelBooking.DAOModel;
+
+public class RoomType {
+	
+	Integer id;
+	String roomtype;
+	Integer noofrooms;
+	Integer rate;
+
+}

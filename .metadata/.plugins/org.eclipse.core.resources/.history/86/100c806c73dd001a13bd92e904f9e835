@@ -1,0 +1,8 @@
+package parking_lot.payment;
+
+public interface Payment {
+
+	void vehicle();
+	void rate();
+	
+}

@@ -1,0 +1,5 @@
+package com.web.HotelBooking.config;
+
+public class AppConfig {
+
+}

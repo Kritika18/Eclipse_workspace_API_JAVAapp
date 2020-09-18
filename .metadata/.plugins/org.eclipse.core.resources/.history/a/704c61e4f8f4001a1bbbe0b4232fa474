@@ -1,0 +1,19 @@
+package com.web.HotelBooking.DAO;
+
+import javax.validation.Valid;
+
+import com.web.HotelBooking.DAOModel.RoomType;
+
+public class RoomTypeDAO {
+
+	public void registertype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void updatetype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

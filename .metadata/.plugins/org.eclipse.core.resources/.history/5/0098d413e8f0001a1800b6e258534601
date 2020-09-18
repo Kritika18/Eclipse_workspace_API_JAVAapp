@@ -1,0 +1,108 @@
+package algo;
+
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.LinkedList;
+import java.util.*;
+
+
+public class CommonElements {
+	
+	public static void main(String[] args)
+	{
+		Integer[] a1 = {1,2,3,4,5};
+		Integer[] a2 = {2,3,6,7,8};
+		String[] one = {"abc" , "xyz" , "name"};
+		String[] two = {"abc" , "xyza" , "namek"};
+		CommonElements c = new CommonElements();
+		c.findCommonInt(a1,a2);
+		c.findCommonString(one, two);
+	
+	}
+
+	private void findCommonString(String[] one, String[] two) {
+		// TODO Auto-generated method stub
+		 Queue<String> q = new LinkedList<String>();  //first array added in queue to remove one by one and compare 
+	        Queue<String> oq = new LinkedList<String>();  //output
+			Collections.addAll(q,one);
+		    System.out.println(q);
+		    int same=0;
+		    while(!q.isEmpty())
+			{
+				String compare = q.poll();
+				
+				for(int i = 0 ; i <two.length ; i++)
+				{ 
+					for(int k =0 ; k<compare.length() ; k++)  //to check letter one by one
+					{
+						if(compare.charAt(k) == two[i].charAt(k) )
+						{
+							same = 1;
+							System.out.println("Common element" + oq.poll());
+						}
+						else
+						{
+							 same = 0;
+							break;
+						}
+						
+						
+						
+					}
+				if(same==0)  //all letter not same 
+					{
+						System.out.print("not same");
+					}
+					else // all letter same 
+					{
+						oq.add(compare);
+						oq.poll();
+						System.out.println(oq.poll());
+					}
+					
+				}
+				
+			}
+		    
+		    
+		    
+		
+		
+	}
+
+	private void findCommonInt(Integer[] a1, Integer[] a2) {
+		// TODO Auto-generated method stub
+		
+		
+        Queue<Integer> q = new LinkedList<Integer>();  //first array added in queue to remove one by one and compare 
+        Queue<Integer> oq = new LinkedList<Integer>();  //output
+		Collections.addAll(q,a1);
+	    System.out.println(q);
+	    
+		while(!q.isEmpty())
+		{
+			int compare = q.poll();
+			
+			for(int i = 0 ; i <a2.length ; i++)
+			{
+				
+				if(compare == a2[i])
+				{
+					oq.add(compare);
+					System.out.println("Common element" + oq.poll());
+				}
+			}
+			
+		}
+	    
+//		while(!oq.isEmpty())
+//		{
+//			
+//			System.out.println("Common element" + oq.poll());
+//		}
+//	    
+	}
+	
+
+}

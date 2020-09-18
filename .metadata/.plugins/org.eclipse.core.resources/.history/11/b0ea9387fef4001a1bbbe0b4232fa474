@@ -1,0 +1,53 @@
+package com.web.HotelBooking.controller;
+
+import javax.validation.Valid;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.web.HotelBooking.DAOModel.RoomType;
+import com.web.HotelBooking.service.RegisterService;
+import com.web.HotelBooking.service.RoomTypeService;
+
+@RestController
+public class RoomAddController {
+	
+	
+	@Autowired
+	RoomTypeService roomtypeservice;
+	
+	@Autowired
+	RegisterService registerservice;
+	
+	
+	
+	@PostMapping("/register")  
+	private int addtype(@Valid @RequestBody RoomType u)   
+	{  
+		roomtypeservice.save(u);  
+	return u.getId();  
+	}  
+	
+//	@PutMapping("/increase")
+//	private String put(@PathVariable("email") String emailaddress RoomType u)   
+//	{
+//		roomtypeservice.update(u);  
+//		return u.getNoofrooms();  
+//	}
+//	
+//	
+//	
+//// all bookings from table bookings 
+//	@GetMapping(path = "/viewbookingreport")
+//	public ResponseEntity<?> bookings() {
+//		LOG.info("Loading email Details");
+//        return new ResponseEntity<>(roomtypeservice.bookings(), HttpStatus.OK);
+//	}
+	
+	
+	
+
+}

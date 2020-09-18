@@ -1,0 +1,14 @@
+package com.web.HotelBooking.DAOModel;
+import java.sql.Date;
+
+public class RoomBooked {
+	
+	Integer id;
+	Integer roomnoid;
+	Integer bookingid;
+	String rate;
+	Date checkin ;
+	Date checkout;
+	
+
+}

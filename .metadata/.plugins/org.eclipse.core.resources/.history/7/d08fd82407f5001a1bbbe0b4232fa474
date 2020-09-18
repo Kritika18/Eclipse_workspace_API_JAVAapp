@@ -1,0 +1,10 @@
+package com.web.HotelBooking.DAOModel;
+
+public class RoomNoTable {
+	
+	Integer id;
+	Integer roomtypeid;
+	String noofroom;
+	String rate;
+
+}

@@ -1,0 +1,8 @@
+package com.web.HotelBooking.DAOModel;
+
+public class Bookings {
+
+	
+	Integer id;
+	String 
+}

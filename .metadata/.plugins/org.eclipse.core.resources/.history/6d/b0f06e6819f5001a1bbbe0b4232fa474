@@ -1,0 +1,30 @@
+package com.web.HotelBooking.DAO;
+
+import java.util.List;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.web.HotelBooking.DAOModel.Bookings;
+
+
+
+public class bookingDetailsDAO {
+	
+	private JdbcTemplate jdbc;
+
+	@Autowired
+	public bookingDetailsDAO(DataSource dataSource) {
+		jdbc = new JdbcTemplate(dataSource);
+	}
+
+	public  List<Bookings> getBookingDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+}

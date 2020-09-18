@@ -1,0 +1,14 @@
+package com.web.HotelBooking.DAO;
+
+import java.util.List;
+
+import com.web.HotelBooking.service.Bookings;
+
+public class bookingDetailsDAO {
+
+	public static List<Bookings> getBookingDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

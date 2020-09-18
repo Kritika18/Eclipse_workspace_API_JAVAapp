@@ -1,0 +1,6 @@
+package parking_lot.payment;
+
+public class Leave implements Payment extends SaveCarData {
+	
+
+}

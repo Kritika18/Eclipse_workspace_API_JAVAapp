@@ -1,0 +1,44 @@
+package algo;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.*;
+
+public class SumAtBothEnds {
+	
+	public static void main(String args[])
+	{
+	Integer[] arr = {2,3,4,5,1,3,6,1};
+	
+	
+	SumAtBothEnds Obj = new SumAtBothEnds();
+	Obj.findCombination(arr);
+	
+	}
+	public void findCombination(Integer[] a)
+	{
+		int count=0;
+		
+		Queue<Integer> q = new LinkedList<Integer>();
+		
+	    Collections.addAll(q,a );
+	    System.out.println(q);
+	    Map<Integer, Integer> m = new HashMap<Integer, Integer>();
+		while(!q.isEmpty())
+		{
+	    int n = q.poll();
+	    System.out.println(n);
+	    count++; 
+	    
+	    for(int i = count ; i<a.length;i++)
+	    {
+	    	m.put(a[i],n);
+	    	System.out.println("in for " +a[i]);
+	    }
+	    System.out.println(m);
+		}
+		System.out.println(m);
+	}
+	
+
+}

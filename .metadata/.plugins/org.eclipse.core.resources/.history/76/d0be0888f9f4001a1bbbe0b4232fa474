@@ -1,0 +1,31 @@
+package com.web.HotelBooking.DAO;
+
+import javax.validation.Valid;
+
+import com.web.HotelBooking.DAOModel.RoomType;
+
+public class RoomTypeDAO {
+
+	public void registertype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+		String sql = "insert into roomtype(noofrooms , rate , roomtype ) values(?,?,?)";
+		
+		try {
+			jdbc.update(sql , u.getId(), u.getFirstName() , u.getLastName(),u.getEmail(),u.getMobile(),u.getPassword() );
+		}
+		catch(Exception e) {
+			
+			System.out.println(e);
+		
+		
+		}	
+		
+	}
+
+	public void updatetype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

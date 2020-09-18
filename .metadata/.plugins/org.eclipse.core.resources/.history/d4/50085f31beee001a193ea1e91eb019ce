@@ -1,0 +1,129 @@
+package com.parking.main;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+
+import com.parking.model.SaveCarData;
+import com.parking.payment.Car;
+import com.parking.payment.Payment;
+import com.parking.space.ExitGate;
+import com.parking.space.ParkingSpace;
+
+public class Main {
+	public static void main(String args[]) throws NumberFormatException, IOException {
+try {
+		FileReader fr = new FileReader("C:\\Users\\ADMIN\\Desktop\\interviewque\\readit.txt");
+		BufferedReader br = new BufferedReader(fr);
+		String space = null;
+
+		String line;
+
+		int i = 0;
+		ArrayList<SaveCarData> listObj = new ArrayList<>();
+
+		ParkingSpace park1 = new ExitGate();
+		SaveCarData s = new SaveCarData();
+
+		while ((line = br.readLine()) != null) { // loop to read entire lines in file , reads one line at a time and
+													// perform tasks
+
+			if (line.contains("status")) {
+
+				System.out.println("Slot No. Registration No.");
+				for (i = 0; i < listObj.size(); i++) { // used for loop to print in different lines (no major loop)
+					System.out.println(listObj.get(i)); // gives the status of parking
+				}
+
+			}
+			if (line.contains("create_parking_lot")) { // create slots written in the file
+
+				space = line.split(" ")[1].trim();
+
+				int slots = Integer.parseInt(space);
+
+				park1.CreatingMethod(slots); // create slots written in the file
+				System.out.println("Created parking lot with " + slots);
+
+			}
+
+			if (line.contains("park ")) { // park car no written in the file
+
+				String plate = line.split(" ")[1].trim();
+
+				int carpresent = 0;
+				int spot = park1.park(plate); // gives 0 if spots are full eg - if 6 parking space booked returns 0
+
+				
+				
+
+				for (i = 0; i < listObj.size(); i++) { // to check if car is already at parking (no major loop)
+					if (listObj.get(i).getPlateNo() == plate) {
+						System.out.println("in park "  + listObj.get(i));
+						System.out.println("in park in "  + listObj.get(i).getPlateNo() + i );
+						System.out.println("in park plate " + plate);
+						System.out.println("Car already present");
+						carpresent = 1;
+					}
+				}
+				if (carpresent == 0) { // if car is not there then add that car
+					if (spot > 0) {
+						
+						//s.Setdata(plate, spot);
+						//System.out.println(s);
+						System.out.println(spot-1);
+						listObj.add(new SaveCarData(plate, spot));
+						//System.out.println("at 0" +listObj.get(0));
+						System.out.println("Allocated slot number : " + spot);
+						System.out.println(listObj);
+						
+
+					}
+
+				}
+			}
+
+			if (line.contains("leave")) { // remove car no written in the file also take payment
+				int found = 0;
+				String leavecar = line.split(" ")[1].trim();
+				String hours = line.split(" ")[2].trim();
+				int hour = Integer.parseInt(hours);
+
+				Iterator iterator = listObj.iterator();
+				for (SaveCarData s1 : listObj) { // search the car no till the size of list if same car present remove it
+												// from parking
+
+					if (leavecar.contentEquals(s1.getPlateNo())) {
+						park1.leave(s1.getSpot());
+						int spot = s1.getSpot();
+						listObj.remove(s1);
+
+						System.out.print("Registration number " + leavecar + " with Slot Number " + spot
+								+ " is free with Charge ");
+						found = 1;
+						break;
+					}
+
+				}
+
+				if (found == 0) { // if car not found
+
+					System.out.println("Registration number" + leavecar + " not found");
+
+				} else { // if found calculate payment
+
+					Payment pay = new Car();
+					pay.rate(hour);
+				}
+
+			}
+		}
+	}
+	catch ( NumberFormatException e  )
+	{
+		
+	}
+	}
+}

@@ -1,0 +1,23 @@
+package com.web.HotelBooking.service;
+
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import com.web.HotelBooking.DAO.bookingDetailsDAO;
+
+@Service
+public class BookingService {
+	
+	@Autowired
+	bookingDetailsDAO bookingDao;
+	
+	
+
+	public Object bookings() {
+		// TODO Auto-generated method stub
+		return  bookingDao.bookings();
+	}
+
+}

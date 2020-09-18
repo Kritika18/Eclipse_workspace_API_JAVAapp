@@ -1,0 +1,65 @@
+package com.web.HotelBooking.DAO;
+
+import javax.sql.DataSource;
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import com.web.HotelBooking.DAOModel.RoomType;
+
+@Repository
+public class RoomTypeDAO {
+	
+	private JdbcTemplate jdbc;
+
+	@Autowired
+	public RoomTypeDAO(DataSource dataSource) {
+		jdbc = new JdbcTemplate(dataSource);
+	}
+	
+
+	public void registertype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+		String sql = "insert into roomtype(id ,noofrooms , rate , roomtype ) values(?,?,?,?)";
+		
+		try {
+			jdbc.update(sql , u.getId(), u.getNoofrooms() , u.getRate() ,u.getRoomtype() );
+		}
+		catch(Exception e) {
+			
+			System.out.println(e);
+		
+		
+		}	
+		
+	}
+
+
+	public void updatetype(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+      String sql = "update roomtype SET noofrooms = ? where roomtype = ? ";
+
+
+		try {
+			jdbc.update(sql , u.getNoofrooms() , u.getRoomtype());
+		}
+		catch(Exception e) {
+			
+			System.out.println(e);
+		
+		
+		}	
+		
+	}
+
+//	public void updatetype(@Valid RoomType u) {
+//		// TODO Auto-generated method stub
+//		
+//		String sql = "UPDATE roomtype SET noofrooms =  '" '" WHERE CustomerID = 1";
+//		
+//	}
+
+}

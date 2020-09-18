@@ -1,0 +1,29 @@
+package com.web.HotelBooking.service;
+
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.web.HotelBooking.DAO.RegisterDAO;
+import com.web.HotelBooking.DAOModel.RoomType;
+
+public class RoomTypeService {
+	@Autowired
+	private RegisterTypeDAO repo;
+
+	public void saveOrUpdate(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		 repo.registertype(u);  
+	}
+
+	public void update(@Valid RoomType u) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Object bookings() {
+		// TODO Auto-generated method stub
+		return  bookDetailsDAO.getBookDetails();
+	}
+
+}

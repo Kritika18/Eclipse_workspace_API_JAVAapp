@@ -1,0 +1,61 @@
+package com.web.HotelBooking.controller;
+
+import javax.validation.Valid;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.web.HotelBooking.DAOModel.RoomType;
+import com.web.HotelBooking.service.BookingService;
+import com.web.HotelBooking.service.RoomTypeService;
+
+@RestController
+public class RoomAddController {
+	
+	
+	@Autowired
+	RoomTypeService roomtypeservice;
+	
+	@Autowired
+	BookingService bookingService;
+
+	
+	
+	
+	@PostMapping("/registeroom")  
+	private int addtype(@Valid @RequestBody RoomType u)   
+	{  
+		roomtypeservice.save(u);  
+	return u.getId();  
+	}  
+	
+
+	@PutMapping("/changecapacity")
+	public void updateroomtype( @Valid @RequestBody RoomType u)  {
+	
+		roomtypeservice.update(u);  
+	}
+	
+	
+//	
+// all bookings from table bookings 
+	@GetMapping(path = "/viewbookingreport")
+	public ResponseEntity<?> bookings() {
+		
+        return new ResponseEntity<>(bookingService.bookings(), HttpStatus.OK);
+	}
+	
+	
+	
+	
+	
+	
+
+}

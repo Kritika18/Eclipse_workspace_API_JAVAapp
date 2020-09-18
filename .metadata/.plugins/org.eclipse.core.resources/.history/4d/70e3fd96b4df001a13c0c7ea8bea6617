@@ -1,0 +1,222 @@
+/* Create parking is parent class of SaveCarData
+ *.
+ */
+package parking_lot;
+import java.awt.List;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
+import java.util.Scanner;
+
+import parking_lot.model.SaveCarData;
+import parking_lot.payment.Car;
+import parking_lot.payment.Payment; 
+
+public class CreateParking {
+	
+	int slots;
+	
+	ArrayList<Integer> emptyspace =new ArrayList<>();
+	ArrayList<Integer> available = new ArrayList<>();
+	public void CreatingMethod() {
+        System.out.print("Enter no of slots you want for parking");
+        Scanner myObj = new Scanner(System.in);  // Create a Scanner object
+        
+
+         slots = myObj.nextInt();
+         available.ensureCapacity(slots);
+         System.out.println("in create "+ slots);
+         
+         
+         
+        }
+	
+	public Integer set(Integer plate) {
+		
+		System.out.println(available.size());
+		System.out.println(slots+"in set");
+		int size = available.size();
+		if(size < slots)
+		{
+	
+		 if (emptyspace.isEmpty())
+		 {
+		 available.add(plate);
+		 
+		 }
+		 else
+		 {
+			 int empty= emptyspace.get(0);
+			 System.out.println("in empty list we have "+ emptyspace.get(0));
+			 available.add(empty , plate);
+			 System.out.println("new list we have "+ available);
+			 emptyspace.remove(0);
+			 System.out.println("new emptylist we have "+ emptyspace);
+		 }
+		 
+		}
+		else
+		{
+			System.out.println("parking full");
+		}
+			 
+
+	
+		  return available.indexOf(plate);
+		
+}
+	
+	public void showspots()
+	{
+		System.out.println("Parking is like this - " + available);
+		
+	}
+	
+	
+	public void remove(Integer empty) {
+	
+		
+		//int emptyit = getSpot(plate);
+		emptyspace.add(empty); //3 
+		
+		Collections.sort(emptyspace);
+		System.out.println(empty +" place is empty ");
+//		available.remove(empty); 
+//		available.remove(empty);
+		
+		
+		available.remove((int) empty); 
+		// remove plateno at this spot(empty)
+		System.out.print("in remove method " + available);
+		
+		System.out.print("in remove method- new size of list " + available.size());
+		
+		
+	}
+	
+	 
+	
+	public static void main(String args[])
+	{
+		//CreateParking create = new CreateParking();
+       //  create.CreatingMethod();
+         
+         SaveCarData data = new SaveCarData();
+         data.CreatingMethod();
+        // Ticket ticket = new Ticket();  // left for future update 
+         ArrayList<HashMap<Integer, Integer>> listOfHash = new ArrayList<HashMap<Integer, Integer>>(); //to get objects list
+         
+         
+		int choice =1 , i=0;
+	  while (choice!=0)
+	  {
+		  System.out.print(choice);
+		System.out.print("Enter 0 to terminate");
+	     Scanner myObj =new Scanner(System.in);
+        
+         choice = myObj.nextInt();
+         System.out.println("Enter options" );
+ 		System.out.println("1. Park car ");
+        System.out.println("2.Leave car");
+        System.out.println("3.Show Parking space");
+       
+        
+        
+         
+ 	
+         Integer options = myObj.nextInt();
+         switch(options) {
+         case 1 :
+            System.out.println("Lets Park car");
+            System.out.println("Car no.");
+            Integer plate = myObj.nextInt();
+            System.out.println("Car color");
+            String color = myObj.nextLine();
+            data.setColor(color);
+            int spot = data.set(plate);  //returns -1 if plate is not present 
+            
+            System.out.println("Case 1 setting at this - " + spot + " spot ");
+            
+            if(spot>=0) {
+                HashMap<Integer, Integer> mMap = new HashMap<Integer, Integer>();
+                mMap.put(data.setPlateNo(plate),spot);
+               // mMap.put("spot", data.setSpot(spot));
+                listOfHash.add(mMap);
+                System.out.println("Ticket generated " + mMap);
+                }
+            
+     		
+            break;
+         case 2 :
+             System.out.println("Enter car no ");
+             Integer plateno = myObj.nextInt();
+             System.out.println("Enter hours ");
+             Integer hours = myObj.nextInt();
+             
+             for(  i=0; i < listOfHash.size() ;i++ ) {
+                 Map<Integer,Integer> map = listOfHash.get(i);
+                 for (Map.Entry<Integer, Integer> entry : map.entrySet()) 
+                 {
+                       System.out.println (" hashMap");
+                     System.out.println("key: " + entry.getKey() + " value: " + entry.getValue());
+                 
+             
+              if(entry.getKey()==plateno)
+               {
+                      int emptyit = entry.getValue();
+            		  System.out.println("spot of "+plateno +" is " + emptyit);
+            		  data.remove(emptyit);
+            		  listOfHash.remove(i);
+            		  System.out.println("Key is " + entry.getKey());
+            		  System.out.println("new list in main " + listOfHash );
+            	 i=100;  
+              }
+             
+             }
+                 
+                 
+                 
+            }
+            if(i!=101) {
+            	 System .out.println("i is" +i);
+           	 
+           	 System .out.println("Car not in parking");
+           
+            }
+            else {
+            	
+            	Payment pay = new Car();
+                pay.rate(hours);
+            }
+            break;
+         
+             
+         case 3 :
+        	 data.showspots();
+            
+             break;
+             
+         case 4 :
+        	
+        	System.out.print("Enter Car no");
+     		Integer carno = myObj.nextInt();
+     		
+            
+             break;
+         default :
+             System.out.println("Invalid option");
+         }
+         
+		
+		
+		
+	  }
+		
+	
+		
+		
+	}
+}
+	

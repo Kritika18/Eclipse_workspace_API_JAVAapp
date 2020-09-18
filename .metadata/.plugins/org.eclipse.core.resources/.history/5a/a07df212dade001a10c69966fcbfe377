@@ -1,0 +1,27 @@
+package parking_lot.payment;
+
+import parking_lot.model.SaveCarData;
+
+public class Leave implements Payment  {
+
+	@Override
+	public void vehicle() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void rate(int n) {
+		if(n<=2)
+		{
+			int rate =20;
+		}
+		if(n>2)
+		{
+			int no = n-2;
+			int rate = (20 + 10*no);
+		}
+	} 
+	
+
+}
